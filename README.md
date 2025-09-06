@@ -15,8 +15,8 @@ The project fine-tunes transformer models (Llama, Gemma, Mistral) on coreference
 ### From Source (Recommended for Development)
 
 ```bash
-# Clone the repository
-git clone https://github.com/itunlplab/coref-inst.git
+# Clone the repository with submodules
+git clone --recursive https://github.com/itunlplab/coref-inst.git
 cd coref-inst
 
 # Install in development mode
@@ -240,15 +240,17 @@ bash auto_map.sh
 
 ### Additional Tools Required
 
-**CorefUD Scorer** (required for evaluation):
+**CorefUD Scorer** (included as submodule):
 ```bash
-# Install CorefUD scorer tools separately
-git clone https://github.com/ufal/corefud-scorer.git
+# Initialize and update the submodule
+git submodule update --init --recursive
+
+# Install scorer dependencies  
 cd corefud-scorer
 pip install -r requirements.txt
 ```
 
-**Note**: The CorefUD scorer is not automatically installed with this package due to its specific requirements. Install it manually following the instructions at https://github.com/ufal/corefud-scorer
+**Note**: The CorefUD scorer is included as a git submodule for easier installation. If you cloned without `--recursive`, use the commands above to initialize it.
 
 ## Citation
 
