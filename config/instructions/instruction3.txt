@@ -1,0 +1,3 @@
+For every mention in <m> </m> tags examine if there is any coreferential/coherent mention.
+If two mentions represent the same entity write the same number instead of MASK after closing mention tag </m>.
+Do not change anything else other than MASK.

@@ -1,0 +1,22 @@
+# Core ML and NLP libraries
+torch>=2.0.0
+transformers>=4.30.0
+datasets>=2.10.0
+numpy>=1.21.0
+tqdm>=4.64.0
+
+# Unsloth for efficient training
+unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git
+
+# Training and fine-tuning
+trl>=0.7.0
+wandb>=0.15.0
+
+# UDAPI for CoNLL-U processing
+udapi>=0.4.0
+
+# YAML configuration support
+pyyaml>=6.0
+
+# Note: CorefUD scorer tools need to be installed separately from:
+# https://github.com/ufal/corefud-scorer

@@ -1,0 +1,5 @@
+[console_scripts]
+coref-infer = src.inference.infer:main
+coref-map-predictions = src.evaluation.mapper.map_pred:main
+coref-process-data = src.data_processing.format_dataset.dataset:main
+coref-train = src.training.train_unified:main

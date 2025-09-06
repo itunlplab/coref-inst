@@ -1,0 +1,206 @@
+# Default configuration for Coreference Resolution with Large Language Models
+# This file contains all default settings that can be overridden via command line arguments
+
+# Model Configuration
+model:
+  # Supported model names and their configurations
+  supported_models:
+    llama: "unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit"
+    gemma: "unsloth/gemma-2-9b-it-bnb-4bit"
+    mistral: "unsloth/mistral-7b-instruct-v0.3-bnb-4bit"
+  
+  # Model parameters
+  max_seq_length: 8192
+  dtype: "float16"  # or "bfloat16", "float32"
+  load_in_4bit: true
+  trust_remote_code: true
+  
+  # LoRA/PEFT Configuration
+  peft:
+    r: 16
+    target_modules: ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+    lora_alpha: 16
+    lora_dropout: 0.0
+    bias: "none"
+    use_gradient_checkpointing: "unsloth"
+    use_rslora: false
+    loftq_config: null
+
+# Training Configuration
+training:
+  # Basic training parameters
+  num_train_epochs: 5
+  per_device_train_batch_size: 4
+  gradient_accumulation_steps: 1
+  learning_rate: 2.0e-4
+  warmup_steps: 5
+  
+  # Optimization settings
+  optim: "adamw_8bit"
+  lr_scheduler_type: "constant"
+  weight_decay: 0.0
+  
+  # Precision settings
+  fp16: true
+  bf16: false
+  
+  # Logging and checkpointing
+  logging_steps: 1
+  save_steps: 250
+  eval_steps: 1
+  report_to: "wandb"
+  
+  # Output directories
+  output_dir: "models/sst_full_determinism"
+  checkpoint_dir: "custom_checkpoints"
+  
+  # Dataset processing
+  dataset_text_field: "text"
+  dataset_num_proc: 4
+  packing: false
+  max_samples: null  # null for all samples
+
+# Data Processing Configuration
+data:
+  # Dataset paths
+  dataset_base_dir: "data/old_ds"
+  instruction_dir: "config/instructions"
+  
+  # Processing parameters
+  window_size: 1500
+  stride: 20
+  max_length_threshold: 1500
+  
+  # Dataset partitions
+  train_split: "train"
+  valid_split: "valid"
+  test_split: "test"
+
+# Inference Configuration
+inference:
+  # Generation parameters
+  max_new_tokens: 512
+  temperature: 0.1
+  top_p: 0.9
+  do_sample: true
+  
+  # Batch processing
+  batch_size: 1
+  max_samples_inference: 38  # for initial experiments
+  
+  # Output format
+  output_format: "jsonl"
+  skip_special_tokens: true
+
+# Language Configuration
+languages:
+  # Supported languages with full names
+  language_dict:
+    tr: "Turkish"
+    ca: "Catalan"
+    cs: "Czech"
+    cu: "Church Slavonic"
+    de: "German"
+    en: "English"
+    es: "Spanish"
+    fr: "French"
+    grc: "Ancient Greek"
+    hbo: "Ancient Hebrew"
+    hu: "Hungarian"
+    lt: "Lithuanian"
+    no: "Norwegian"
+    pl: "Polish"
+    ru: "Russian"
+  
+  # Languages without zero mentions
+  no_zero_langs: ["en", "fr", "ru", "no", "lt", "hbo"]
+
+# Instruction Templates
+instructions:
+  # Zero mention instruction text
+  zero_mention_text: "Where you see </z>@ there is a zero mention, which is normally not written but you also need to link them with other mentions."
+  
+  # Available instruction numbers
+  available_instructions: [1, 2, 3, 4, 5, 6]
+  default_instruction: 1
+
+# Wandb Configuration
+wandb:
+  project: "coref-resolution"
+  log_model: "checkpoint"
+  watch: true
+  service_wait: 300
+  save_code: true
+  save_files: ["*.py", "*.sh"]
+
+# Reproducibility
+reproducibility:
+  # Environment variables for deterministic behavior
+  pythonhashseed: true
+  cuda_launch_blocking: true
+  cublas_workspace_config: ":4096:8"
+  
+  # PyTorch settings
+  deterministic: true
+  benchmark: false
+  enabled: false
+  use_deterministic_algorithms: true
+
+# Evaluation and Mapping
+evaluation:
+  # CorefUD evaluation settings
+  scorer_path: "src/evaluation/mapper/corefud-scorer"
+  
+  # Mapping parameters
+  alignment_threshold: 0.8
+  max_alignment_distance: 5
+  
+  # Output validation
+  validate_format: true
+  compute_scores: true
+
+# Hardware and Performance
+hardware:
+  # GPU settings
+  cuda_visible_devices: null  # null means use all available
+  mixed_precision: "fp16"
+  
+  # Memory optimization
+  gradient_checkpointing: true
+  dataloader_num_workers: 4
+  dataloader_pin_memory: true
+  
+  # Batch size optimization
+  auto_find_batch_size: false
+  max_grad_norm: 1.0
+
+# Paths and Directories
+paths:
+  # Base directories
+  project_root: "."
+  src_dir: "src"
+  config_dir: "config"
+  data_dir: "data"
+  models_dir: "models"
+  scripts_dir: "scripts"
+  notebooks_dir: "notebooks"
+  
+  # Output directories
+  logs_dir: "logs"
+  results_dir: "results"
+  cache_dir: ".cache"
+
+# Development and Debugging
+debug:
+  # Debug modes
+  debug_mode: false
+  verbose: false
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  
+  # Profiling
+  profile_memory: false
+  profile_time: false
+  
+  # Testing
+  fast_dev_run: false
+  overfit_batches: 0

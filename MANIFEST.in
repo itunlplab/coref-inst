@@ -1,0 +1,28 @@
+# Include the README and license files
+include README.md
+include LICENSE
+
+# Include configuration files
+recursive-include config *.txt
+recursive-include config/instructions *.txt
+
+# Include shell scripts
+recursive-include scripts *.sh
+
+# Include data files (but not actual datasets due to size)
+include data/.gitkeep
+
+# Include source code
+recursive-include src *.py
+
+# Include notebooks
+recursive-include notebooks *.ipynb
+
+# Exclude certain files
+exclude .gitignore
+exclude *.pyc
+exclude .DS_Store
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+recursive-exclude * .git*
+recursive-exclude data/old_ds *

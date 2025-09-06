@@ -1,0 +1,4 @@
+For every mention in <m> </m> tags examine if there is any coreferential mention.
+If two mentions represent the same entity write the same number instead of MASK after closing mention tag </m>.
+For example: author and book represent different entities.
+Do not change anything else other than MASK.

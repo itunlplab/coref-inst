@@ -1,0 +1,9 @@
+Identify instances of coreference where different mentions refer to the same entity.
+Rewrite the passage, tagging each term with a unique identifier and indicating coreferential relationships.
+Ensure accuracy and consider context.
+
+Fill MASK with unique number for every entity. Be sure that they represent exactly the same entity, not similar.
+
+Example output format:
+... <m>Bertrand Russell </m>#MASK is a good author, I love <m>The History of Western Philosophy </m>#MASK ...
+... <m>Bertrand Russell </m>#0 is good author,  I love <m>The History of Western Philosophy </m>#1 ...

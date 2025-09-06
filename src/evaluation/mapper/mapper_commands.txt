@@ -1,0 +1,25 @@
+python ./mapper/map_tugba.py -g ./mapper/dev_GUM_fiction_lunre.conllu -o ./mapper/llama2_files/llama2_fiction.out -llm_output_file ./mapper/llama2_files/llama2_fiction.jsonl >> ./mapper/llama2_files/llama2_fiction.eval
+
+python ./mapper/map_tugba.py -g ./mapper/dev_GUM_letter_arendt.conllu -o ./mapper/llama2_files/llama2_letter.out -llm_output_file ./mapper/llama2_files/llama2_letter.jsonl >> ./mapper/llama2_files/llama2_letter.eval
+
+python ./mapper/map_tugba.py -g ./mapper/dev_GUM_textbook_labor.conllu -o ./mapper/llama2_files/llama2_textbook.out -llm_output_file ./mapper/llama2_files/llama2_textbook.jsonl >> ./mapper/llama2_files/llama2_textbook.eval
+
+
+set --> file, model, num
+python ./mapper/map.py -g ./mapper/dev_$file.conllu -o ./mapper/$model$num\_files/$model$num_$file.out -llm_output_file ./mapper/$model$num\_files/$model$num_$file.jsonl >> ./mapper/$model$num\_files/$model$num$file.eval
+python ./mapper/map_tugba.py -g ./mapper/dev_$file.conllu -o ./mapper/$model$num\_files/$model$num_$file.out -llm_output_file ./mapper/$model$num\_files/$model$num_$file.jsonl >> ./mapper/$model$num\_files/$model$num$file.eval
+
+
+
+
+
+model=mistral
+num=5
+doc=GUM_letter_arendt
+
+GUM_academic_librarians
+GUM_podcast_wrestling
+GUM_bio_emperor
+GUM_voyage_athens
+python ./mapper/map.py -g ./mapper/dev_$doc.conllu -o ./mapper/$model$num\_files/$model_$num_$doc.out -llm_output_file ./infer_results_addition/$model$num.jsonl -d $doc
+>> ./mapper/$model$num\_files/$model$num$file.eval

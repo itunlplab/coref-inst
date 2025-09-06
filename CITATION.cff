@@ -1,0 +1,59 @@
+# Citation File Format (CFF) for academic software
+# See: https://citation-file-format.github.io/
+
+cff-version: 1.2.0
+title: "Coreference Resolution with Large Language Models"
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - given-names: "Tuğba"
+    family-names: "Pamay Arslan"
+    email: "tpamay@itu.edu.tr"
+    affiliation: "Istanbul Technical University"
+    orcid: "https://orcid.org/0000-0001-8747-8637"
+  - given-names: "Emircan"
+    family-names: "Erol"
+    email: "erole20@itu.edu.tr"
+    affiliation: "Istanbul Technical University"
+  - given-names: "Gülşen"
+    family-names: "Eryiğit"
+    email: "gulsen.cebiroglu@itu.edu.tr"
+    affiliation: "Istanbul Technical University"
+    orcid: "https://orcid.org/0000-0003-4607-7305"
+  # Add additional authors as needed
+repository-code: "https://github.com/itunlplab/coref-inst"
+url: "https://github.com/itunlplab/coref-inst"
+abstract: >
+  This repository contains the implementation for coreference resolution 
+  using fine-tuned large language models. The system converts coreference 
+  resolution into a text-to-text task where models learn to identify and 
+  group mentions that refer to the same entity using a novel mention 
+  masking approach.
+keywords:
+  - coreference resolution
+  - natural language processing
+  - large language models
+  - transformers
+  - fine-tuning
+  - computational linguistics
+license: MIT
+version: "1.0.0"
+preferred-citation:
+  type: article
+  title: "CorefInst: Leveraging LLMs for Multilingual Coreference Resolution"
+  authors:
+  - given-names: "Tuğba"
+    family-names: "Pamay Arslan"
+    email: "tpamay@itu.edu.tr"
+    affiliation: "Istanbul Technical University"
+    orcid: "https://orcid.org/0000-0001-8747-8637"
+  - given-names: "Emircan"
+    family-names: "Erol"
+    email: "erole20@itu.edu.tr"
+    affiliation: "Istanbul Technical University"
+  - given-names: "Gülşen"
+    family-names: "Eryiğit"
+    email: "gulsen.cebiroglu@itu.edu.tr"
+    affiliation: "Istanbul Technical University"
+    orcid: "https://orcid.org/0000-0003-4607-7305"
+  journal: "Transactions of the Association for Computational Linguistics"
