@@ -258,16 +258,19 @@ If you use this code in your research, please cite our paper:
 
 ```bibtex
 @article{corefinst_2025,
-  title={CorefInst: Leveraging LLMs for Multilingual Coreference Resolution},
-  author={Tuğba Pamay Arslan, Emircan Erol, Gülşen Eryiğit},
-  journal={Transactions of the Association for Computational Linguistics},
-  year={2025},
-  note={Accepted for publication},
-  url={https://github.com/itunlplab/coref-inst}
+    author = {Pamay Arslan, Tuğba and Erol, Emircan and Eryiğit, Gülşen},
+    title = {CorefInst: Leveraging LLMs for Multilingual Coreference Resolution},
+    journal = {Transactions of the Association for Computational Linguistics},
+    volume = {14},
+    pages = {64-80},
+    year = {2026},
+    month = {01},
+    issn = {2307-387X},
+    doi = {10.1162/TACL.a.593},
+    url = {https://doi.org/10.1162/TACL.a.593},
 }
 ```
 
 ## Acknowledgments
 
-This work was supported by the Scientific and Technological Research Council of Turkey (TÜBİTAK) under project grant No. 123E079 within the scope of the TÜBİTAK 2515 (European Cooperation in Science and Technology—COST) program.
-The computing resources used in this work were provided by the National Center for High Performance Computing of Turkey (UHeM) under grant number 4021342024, and by the İTÜ Artificial Intelligence and Data Science Application and Research Center.
+This work was supported by the Scientific and Technological Research Council of Turkey (TÜBİTAK) under project grant No. 123E079 within the scope of the TÜBİTAK 2515 (European Cooperation in Science and Technology-COST) program, and was conducted within the framework of the ongoing UniDive COST Action (CA21167) on Universality, Diversity and Idiosyncrasy in Language Technology. The computing resources used in this work were provided by the National Center for High Performance Computing of Turkey (UHeM) under grant number 4021342024, and by the İTÜ Artificial Intelligence and Data Science Application and Research Center. We would also like to thank the anonymous reviewers and the action editors for their valuable feedback and constructive suggestions, which greatly improved the quality of this article.
